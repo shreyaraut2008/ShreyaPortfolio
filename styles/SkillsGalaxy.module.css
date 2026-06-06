@@ -1,0 +1,211 @@
+.section {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(5, 3, 10, 0.75), rgba(5, 3, 10, 0.75)), url('/galaxy-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-top: 2rem;
+  z-index: 10;
+}
+.title {
+  font-family: var(--font-cormorant);
+  font-size: 3.5rem;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+.subtitle {
+  font-family: var(--font-jetbrains);
+  font-size: 1rem;
+  color: #a0a0a0;
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+
+/* Bottom Text */
+.bottomText {
+  position: absolute;
+  bottom: 4rem;
+  left: 4rem;
+  font-family: var(--font-jetbrains);
+  font-size: 1.1rem;
+  color: #d0d0d0;
+  max-width: 300px;
+  line-height: 1.5;
+  z-index: 10;
+}
+
+/* 3D Galaxy Container */
+.galaxy3d {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Orbit Rings */
+.orbitRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05), inset 0 0 20px rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+/* Node Wrappers */
+.orbitWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+.nodeCounterRotate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+}
+
+/* The actual Skill Node */
+.node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(10, 15, 30, 0.5);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(100, 200, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nodeLarge {
+  width: 140px;
+  height: 140px;
+}
+
+.node:hover {
+  border-color: rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.4), inset 0 0 30px rgba(0, 255, 255, 0.2);
+  background: rgba(10, 15, 30, 0.8);
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.nodeIcon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 8px;
+}
+.nodeLarge .nodeIcon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 12px;
+}
+
+.nodeName {
+  font-family: var(--font-jetbrains);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.nodeLarge .nodeName {
+  font-size: 1.1rem;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(15, 15, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  z-index: 50;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.node:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .galaxy3d {
+    width: 360px;
+    height: 360px;
+  }
+  .node {
+    width: 70px;
+    height: 70px;
+  }
+  .nodeLarge {
+    width: 90px;
+    height: 90px;
+  }
+  .nodeIcon {
+    width: 24px;
+    height: 24px;
+  }
+  .nodeLarge .nodeIcon {
+    width: 32px;
+    height: 32px;
+  }
+  .nodeName {
+    font-size: 0.7rem;
+  }
+  .nodeLarge .nodeName {
+    font-size: 0.85rem;
+  }
+  .bottomText {
+    bottom: 2rem;
+    left: 2rem;
+    font-size: 0.9rem;
+    max-width: 200px;
+  }
+}

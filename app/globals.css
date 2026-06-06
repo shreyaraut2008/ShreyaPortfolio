@@ -1,0 +1,43 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-jetbrains: 'JetBrains Mono', 'Courier New', monospace;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: #050301;
+  color: #f0e6d3;
+  font-family: var(--font-jetbrains);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0806;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 140, 40, 0.35);
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 140, 40, 0.3);
+  color: #fff;
+}
